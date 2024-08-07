@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login and Profile</title>
+</head>
+<body>
+  <h2>Register</h2>
+  <form id="registerForm">
+    <input type="text" id="regUsername" placeholder="Username" required>
+    <input type="password" id="regPassword" placeholder="Password" required>
+    <button type="submit">Register</button>
+  </form>
+
+  <h2>Login</h2>
+  <form id="loginForm">
+    <input type="text" id="loginUsername" placeholder="Username" required>
+    <input type="password" id="loginPassword" placeholder="Password" required>
+    <button type="submit" href="index.html">Login</button>
+  </form>
+
+  <h2>Profile</h2>
+  <div id="profile"></div>
+
+  <script>
+    const API_URL = 'http://localhost:3000';
+
+    // Register
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('regUsername').value;
+      const password = document.getElementById('regPassword').value;
+      
+      try {
+        const response = await fetch(`${API_URL}/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        if (response.ok) alert('Registration successful');
+      } catch (error) {
+        console.error('Registration error:', error);
+      }
+    });
+
+    // Login
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('loginUsername').value;
+      const password = document.getElementById('loginPassword').value;
+      
+      try {
+        const response = await fetch(`${API_URL}/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        if (response.ok) {
+          const { token } = await response.json();
+          localStorage.setItem('token', token);
+          fetchProfile();
+        }
+      } catch (error) {
+        console.error('Login error:', error);
+      }
+    });
+
+    // Fetch Profile
+    async function fetchProfile() {
+      const token = localStorage.getItem('token');
+      if (!token) return;
+
+      try {
+        const response = await fetch(`${API_URL}/profile`, {
+          headers: { 'Authorization': token }
+        });
+        if (response.ok) {
+          const profile = await response.json();
+          document.getElementById('profile').textContent = `Welcome, ${profile.username}!`;
+        }
+      } catch (error) {
+        console.error('Profile fetch error:', error);
+      }
+    }
+
+    // Initial profile fetch
+    fetchProfile();
+  </script>
+</body>
+</html>

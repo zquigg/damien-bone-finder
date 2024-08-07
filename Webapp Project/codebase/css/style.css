@@ -1,0 +1,83 @@
+.navbar-nav {
+  width: 100%;
+  text-align: center;
+}
+
+.profile-picture-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 40vh;
+}
+
+#Profile-Picture-Button {
+  border-radius: 100%;
+  width: 200px;
+  height: 200px;
+  padding: 0;
+  overflow: hidden; 
+}
+
+#Profile-Picture-Image {
+  object-fit: cover; 
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
+#Change-Profile-Picture {
+  margin-top: 20px;
+}
+
+.button-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.Badge-Button {
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  margin: 10px 10px;
+  padding: 0;
+  outline: none;
+}
+
+.Badge-Button:focus{
+  outline: none;
+}
+
+.Button-Image {
+  object-fit: cover; 
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
+.Button-Image[data-collected="false"] {
+  filter: grayscale(1);
+}
+
+.Button-Image[data-collected="true"] {
+  filter: grayscale(0);
+}
+
+#will_delete_later_lol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#but {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  margin: 10px 10px;
+  padding: 0;
+  outline: none;
+}

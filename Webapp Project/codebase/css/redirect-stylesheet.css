@@ -1,0 +1,117 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes imageZoom {
+    from {
+        transform: scale(0.25);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.Location-Name {
+    animation: fadeIn 2s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.image-placeholder {
+    animation: imageZoom 1.5s ease-in-out;
+    animation-fill-mode: forwards;
+    max-width: 320px;
+    max-height: 480px;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.description {
+    animation: slideIn 1s ease-in-out 1.5s;
+    animation-fill-mode: forwards;
+    width: 100%;
+    padding: 1em;
+    margin: 50px auto;
+    display: block;
+    word-wrap: break-word;
+    box-sizing: border-box;
+}
+
+.Location-Name, .image-placeholder, .description {
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background: radial-gradient(circle, #000000, #341c46);
+    color: white;
+}
+
+.navbar-custom {
+    background: radial-gradient(circle, #000000, #2b1938) !important; 
+    color: white !important; 
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: white !important; 
+}
+
+.navbar-custom .navbar-toggler {
+    border-color: white; 
+}
+
+.navbar-custom .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Set the navbar toggler icon color to white */
+}
+
+.mobile, .non-mobile-message {
+    display: none;
+}
+
+.ERROR {
+    font-size: 128px;
+    padding: 2em;
+    color: red;
+}
+
+.ERROR-MESSAGE {
+    margin-top: -100px;
+    font-size: 32px;
+    text-align: center;
+    display: block;
+    color: rgb(87, 9, 9);
+}
+
+@media (max-width: 500px) and (max-height: 875px) {
+    .mobile {
+        display: block;
+    }
+}
+
+@media (min-width: 501px) and (min-height: 876px) {
+    .non-mobile-message {
+        display: block;
+    }
+}
